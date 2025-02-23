@@ -8,20 +8,67 @@ body {
     height: 100vh;
 }
 
+/* Apply the same style to older messages */
+#chat-history {
+    background-color: #2F3136; /* Same as chat box */
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Style the toggle button */
+#toggle-history {
+    background-color: #40444B;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+#toggle-history:hover {
+    background-color: #7289DA; /* Hover effect */
+}
+
 .chat-container {
     background-color: #2F3136;
     padding: 20px;
     border-radius: 8px;
     width: 75%;
+    height: 80vh; /* Fixed height */
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #chat-box {
-    height: 80vh;
-    overflow-y: auto;
+    flex-grow: 1;
+    height: 100%; /* Ensure it always stays within chat-container */
+    overflow-y: auto; /* Enables vertical scrolling */
     border-bottom: 1px solid #40444B;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column; /* Normal top-to-bottom message flow */
+    scrollbar-width: thin; /* Makes scrollbar slimmer */
+    scrollbar-color: #7289DA #2F3136; /* Custom scrollbar color */
+}
+
+/* Custom scrollbar for WebKit browsers */
+#chat-box::-webkit-scrollbar {
+    width: 8px; /* Width of scrollbar */
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #7289DA; /* Color of scrollbar handle */
+    border-radius: 4px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: #2F3136; /* Background track */
 }
 
 .message {

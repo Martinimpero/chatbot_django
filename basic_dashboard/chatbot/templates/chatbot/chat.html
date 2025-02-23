@@ -76,19 +76,39 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
         }
+        function toggleHistory() {
+            let historyDiv = document.getElementById("chat-history");
+            if (historyDiv.style.display === "none") {
+                historyDiv.style.display = "block";
+            } else {
+                historyDiv.style.display = "none";
+            }
+        }
     </script>
 </head>
 <body>
     <div class="chat-container">
-        <div id="chat-box">
+        <button id="toggle-history" onclick="toggleHistory()">Click here to see older conversations this session</button>
+        <div id="chat-history" style="display: none;">
             {% for message in chat_history %}
-                <div class="message">{{ message }}</div>
+                <div class="message {% if message.user %}user{% else %}bot{% endif %}">
+                    {{ message }}
+                </div>
             {% endfor %}
         </div>
+
+        <div id="chat-box">
+            {% for message in messages %}
+                <div class="message {% if message.user %}user{% else %}bot{% endif %}">
+                    {{ message.text }}
+                </div>
+            {% endfor %}
+        </div>
+
         <div class="input-container">
             <input type="text" id="message-input" placeholder="Type a message...">
-            <button id="mic-btn" onclick="startVoiceRecognition()">🎤</button>
-            <button id="send-btn" onclick="sendMessage()">Send</button>
+            <button id="mic-btn">🎤</button>
+            <button id="send-btn">Send</button>
         </div>
     </div>
 </body>
