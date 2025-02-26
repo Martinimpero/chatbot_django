@@ -22,5 +22,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),  # User authentication URLs
     path("dashboard/", include("dashboard.urls")),          # Dashboard URLs
-    path("", views.home, name="home")
+    path("", views.home, name="home"),
+    path("chatbot/", include("chatbot.urls")),
 ]
