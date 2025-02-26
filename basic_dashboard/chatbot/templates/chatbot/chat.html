@@ -87,6 +87,8 @@
     </script>
 </head>
 <body>
+    <a href="{% url 'dashboard' %}" class="back-button">← Back to Dashboard</a>
+
     <div class="chat-container">
         <button id="toggle-history" onclick="toggleHistory()">Click here to see older conversations this session</button>
         <div id="chat-history" style="display: none;">
